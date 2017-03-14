@@ -1,19 +1,16 @@
 #!/bin/bash
 # Generate the properties file and consequently execute the rblm program
 
+# readlink must be installed
+
 stopFilePath="/home/dwaipayan/smart-stopwords"
 #indexPath="/store/collections/indexed/wt10g.lucene.full-text/"
-indexPath="/store/collections/indexed/trec678/"
+indexPath="/store/collections/indexed/wt10g/"
 #indexPath="/home/dwaipayan/wordvecsim/trec678.index/"
 #indexPath="/home/dwaipayan/trec678-full.index/"
-queryPath="/home/dwaipayan/Dropbox/ir/corpora-stats/topics_xml/trec8.xml"
+queryPath="/home/dwaipayan/Dropbox/ir/corpora-stats/topics_xml/wt10g.xml"
 resPath="/home/dwaipayan/"
-#feedbackFromFile=true
-feedbackFromFile=false
-feedbackFilePath="/home/dwaipayan/res-files/baseline-lm/trec8/trec8.0.6.res"
-
-fieldToSearch="content"
-fieldForFeedback="content"
+feedbackFilePath="/home/dwaipayan/Dropbox/paper_submitted/neuir2016-wordvecsim/final-draft/results/res-k-100-centroid-0.4-docOne/trec678-robust.centroid-link-100-0.4-weightedFalse-docformOne.res"
 
 echo "Using stopFilePath="$stopFilePath
 echo "Using indexPath="$indexPath
@@ -76,12 +73,13 @@ rm3.queryMix=$3
 
 rm3.rerank=$rerank
 
-feedbackFromFile=$feedbackFromFile
+feedbackFromFile=false
 
 feedbackFilePath=$feedbackFilePath
 
 EOL
 # .properties file made
 
+#java -Xmx6g -cp dist/RelevanceFeedback.jar RelevanceFeedback.RelevanceBasedLanguageModel $prop_name
 java -Xms512M -Xmx1G -cp dist/RelevanceFeedback.jar RelevanceFeedback.RelevanceBasedLanguageModel $prop_name
 

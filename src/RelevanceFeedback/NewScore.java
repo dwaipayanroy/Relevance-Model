@@ -6,9 +6,10 @@ package RelevanceFeedback;
  * @author dwaipayan
  */
 
-class NewScore {
-    double score;
-    String docid;
+public class NewScore {
+    public double score;
+    public String docid;
+    public int luceneDocid;
 
     public NewScore() {
     }
@@ -17,4 +18,10 @@ class NewScore {
         this.score = score;
         this.docid = docid;
     }
+
+    public NewScore(int luceneDocid, double score) {
+        this.luceneDocid = luceneDocid;
+        this.score = score;
+    }
+    
 }
